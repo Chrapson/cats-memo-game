@@ -53,7 +53,8 @@ function onClick() {
         if (result === pairs) {
           const gameEndTime = new Date().getTime();
           const gameFullTime = (gameEndTime - gameStartTime) / 1000;
-          alert(gameFullTime);
+          alert(`Your game time is: ${gameFullTime}sec.`);
+          location.reload();
         }
       } else {
         clickedCardsArr.forEach((card) => (card.style.background = "black"));

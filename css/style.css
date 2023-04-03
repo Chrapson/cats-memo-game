@@ -38,10 +38,11 @@ body {
     1px 1px 0 #000;
 }
 .difficulty {
+  margin: 0 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
 }
 
 .difficulty__level:hover,
