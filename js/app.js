@@ -50,7 +50,7 @@ function onClick() {
         cardsEls = cardsEls.filter(
           (card) => !card.classList.contains("visible")
         );
-        if (result === 1) {
+        if (result === pairs) {
           const gameEndTime = new Date().getTime();
           const gameFullTime = (gameEndTime - gameStartTime) / 1000;
           const cardsParent = document.querySelector(".game-cards-container");
