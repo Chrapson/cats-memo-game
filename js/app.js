@@ -21,7 +21,7 @@ const cardsBg = [
 const scroll = (window.onload = () => {
   window.scrollBy(100, 100);
 });
-scroll();
+
 let cardsEls = document.querySelectorAll(".game-card");
 cardsEls = [...cardsEls];
 
@@ -50,11 +50,26 @@ function onClick() {
         cardsEls = cardsEls.filter(
           (card) => !card.classList.contains("visible")
         );
-        if (result === pairs) {
+        if (result === 1) {
           const gameEndTime = new Date().getTime();
           const gameFullTime = (gameEndTime - gameStartTime) / 1000;
-          alert(`Your game time is: ${gameFullTime}sec.`);
-          location.reload();
+          const cardsParent = document.querySelector(".game-cards-container");
+          cardsParent.style.filter = "blur(5px)";
+          document.body.classList.add("active");
+          document.querySelector(
+            ".modal-box"
+          ).textContent += `Your game time is: ${gameFullTime} sec.`;
+          document
+            .querySelector(".play-again")
+            .addEventListener("click", playAgain);
+          function playAgain() {
+            location.reload();
+          }
+
+          // setTimeout(function () {
+          //   alert(`Your game time is: ${gameFullTime}sec.`);
+          //   location.reload();
+          // }, 600);
         }
       } else {
         clickedCardsArr.forEach((card) => (card.style.background = "black"));
@@ -62,7 +77,7 @@ function onClick() {
       clickedCard = "";
       clickedCardsArr.length = 0;
       cardsEls.forEach((card) => card.addEventListener("click", onClick));
-    }, 1000);
+    }, 500);
   }
 }
 
